@@ -5,7 +5,7 @@
             {"is-round":round},
         ]'
     >
-        <i v-if='icon' class="el-icon" :class='[`el-icon-${icon}`]'></i>
+        <i v-if='icon' class="eb-icon" :class='[`el-icon-${icon}`]'></i>
         <span v-if="$slots.default"><slot></slot></span>
     </button>
 </template>

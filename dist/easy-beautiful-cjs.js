@@ -140,7 +140,7 @@ var __vue_render__ = function() {
     },
     [
       _vm.icon
-        ? _c("i", { staticClass: "el-icon", class: ["el-icon-" + _vm.icon] })
+        ? _c("i", { staticClass: "eb-icon", class: ["el-icon-" + _vm.icon] })
         : _vm._e(),
       _vm._v(" "),
       _vm.$slots.default ? _c("span", [_vm._t("default")], 2) : _vm._e()
