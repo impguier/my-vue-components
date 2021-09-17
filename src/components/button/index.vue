@@ -1,12 +1,13 @@
 <template>
-    <button class='el-button' @click="handleClick" :class='[`el-button--${type}`,
+    <button class='eb-button' @click="handleClick" :class='[`eb-button--${type}`,
             {"is-plain":isPlain},
             {"is-circle":isCircle},
             {"is-round":round},
         ]'
     >
-        <i v-if='icon' class="eb-icon" :class='[`el-icon-${icon}`]'></i>
+        <i v-if='icon' class="el-icon" :class='[`el-icon-${icon}`]'></i>
         <span v-if="$slots.default"><slot></slot></span>
+        <span v-else>提交</span>
     </button>
 </template>
 
@@ -40,10 +41,10 @@
             handleClick(e) {
                 this.$emit('click', e)
             }
-        }
+        }        
     }
 </script>
 
 <style lang="less">
-    
+@import './index.less';
 </style>
