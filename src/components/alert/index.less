@@ -1,0 +1,56 @@
+@import '../../common/var.less';
+.eb-alert-func(@text) {
+        @color:'alert-@{text}-color';        
+        @color2: '@{text}-color';
+		&.eb-alert-@{text}{
+            background: @@color;
+			.eb-alert-title{
+				color: @@color2;
+			}
+			.eb-alert-msg{
+				color: @@color2;
+			}
+		}		
+	}
+// .loop(@i) when (@i < length(@typeList) + 1) {
+// 	.eb-alert-func(extract(@typeList, @i));
+// 	.loop(@i+1);
+// }
+// .loop(1);
+.eb-alert {
+    width: 100%;    
+    position: fixed; 
+    top:0;   
+    .eb-alert-func(success);
+    .eb-alert-func(error);
+    .eb-alert-func(info);
+    .eb-alert-func(warn);
+
+    .eb-alert-content {
+        padding:10px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        position:relative;
+        &.eb-alert-is-center {
+            justify-content: center;
+        }
+
+        // icon
+        .eb-alert-title {
+            display:block;
+            font-size: 32px;
+            clear:both;
+        }
+
+        .eb-alert-msg {
+            font-size: 24px;
+        }
+        .eb-alert-icon{
+            position:absolute;
+            top:0;
+            right:0;
+        }
+    }
+}
