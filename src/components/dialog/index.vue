@@ -1,5 +1,10 @@
 <template>
-  <transition name="dialog-fade">
+  <transition name="dialog-fade"
+    @before-enter='beforeOpen'
+    @enter='opened'
+    @leave='beforeClose'
+    @after-leave='closed'
+  >
     <div class="eb-dialog__wrapper" @click.self="close" v-show="visible">
       <div class="eb-dialog" :style="{ width, 'margin-top': top }">
         <div class="eb-dialog__header">
@@ -47,11 +52,39 @@ export default {
       type: Boolean,
       default: false,
     },
+    // onopen:{
+    //   type: Function,
+    //   default: ()=>{}
+    // },
+    // onopened:{
+    //   type: Function,
+    //   default: ()=>{}
+    // },
+    // onclose:{
+    //   type: Function,
+    //   default: ()=>{}
+    // },
+    // onclosed:{
+    //   type: Function,
+    //   default: ()=>{}
+    // }
   },
   methods: {
     close() {
       this.$emit("update:visible", false);
     },
+    beforeOpen() {
+      this.$emit('beforeOpen')
+    },
+    opened() {
+      this.$emit('opened')
+    },
+    beforeClose() {
+      this.$emit('beforeClose')
+    },
+    closed() {
+      this.$emit('closed')
+    }
   },
 };
 </script>

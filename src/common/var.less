@@ -1,16 +1,20 @@
 @success-color:#67C23A;
 @info-color:#909399;
-@warn-color:#E6A23C;
+@warning-color:#E6A23C;
 @error-color:#F56C6C;
-@main--olor: #3a8ee6;
+@main--color: #3a8ee6;
+@negitive-color: #c0c4cc;
 
-@success-color-lighter:lighten(@success-color, 35%);
+@success-color-lighter:lighten(@success-color, 30%);
 @info-color-lighter:lighten(@info-color, 35%);
-@warn-color-lighter: lighten(@warn-color, 30%);
-@error-color-lighter:lighten(@error-color, 30%);
+@warn-color-lighter: lighten(@warning-color, 30%);
+@error-color-lighter:lighten(@error-color, 27.5%);
 
 
 @alert-success-color: @success-color-lighter;
 @alert-info-color: @info-color-lighter;
-@alert-warn-color: @warn-color-lighter;
+@alert-warning-color: @warn-color-lighter;
 @alert-error-color:@error-color-lighter;
+
+@alert-close-color: @negitive-color;
+@alert-icon-font-size: 20px;

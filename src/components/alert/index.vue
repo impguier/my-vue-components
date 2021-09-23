@@ -1,7 +1,7 @@
 <template>
-  <transition>
+  <transition name="eb-alert-fade">
     <div
-      role='alert'
+      role="alert"
       class="eb-alert"
       :class="[
         `eb-alert-${type}`,
@@ -9,18 +9,23 @@
           'eb-alert-center': position == 'center',
           'eb-alert-bottom': position == 'bottom',
         },
+        { 'eb-alert-is-center': isCenter },
       ]"
       v-show="visible"
     >
-      <i v-if="showIcon" :class="[`eb-alert-icon-${type}`]"></i>
-      <div
-        class="eb-alert-content"
-        :class="[{ 'eb-alert-is-center': isCenter }]"
-      >        
+      <i
+        v-if="showIcon"
+        :class="['eb-icon', isNeedBig, `eb-icon-${type}-circle`]"
+      ></i>
+      <div class="eb-alert-content">
         <span class="eb-alert-title" v-text="title"></span>
         <p class="eb-alert-msg" v-text="alertMsg"></p>
         <p v-if="$slots.default"><slot></slot></p>
-        <i v-if='closeble' class="eb-alert-icon" :class="['eb-alert-icon-close']"></i>
+        <i
+          v-if="closeble"
+          class="eb-icon eb-icon-close eb-alert-close-icon"
+          @click="close"
+        ></i>
       </div>
     </div>
   </transition>
@@ -37,7 +42,7 @@ export default {
     // alert 类型
     type: {
       type: String,
-      default: "info",
+      default: "default",
     },
     // alert title
     title: {
@@ -47,7 +52,7 @@ export default {
     // alert content
     alertMsg: {
       type: String,
-      default: "Message",
+      default: "",
     },
     // alert 是否显示icon
     showIcon: {
@@ -63,7 +68,7 @@ export default {
       type: Boolean,
       default: false,
     },
-		isCenter: {
+    isCenter: {
       type: Boolean,
       default: false,
     },
@@ -73,16 +78,21 @@ export default {
     },
   },
   data() {
-		return {}
-	},
+    return {};
+  },
+  computed: {
+    isNeedBig() {
+      return this.alertMsg.length > 0 ? `eb-alert-big-${this.type}` : "";
+    },
+  },
   methods: {
     close() {
-      this.$emit("close:update", false);
+      this.$emit("update:visible", false);
     },
   },
 };
 </script>
 
 <style lang="less">
-@import './index.less';
+@import "./index.less";
 </style>

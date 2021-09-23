@@ -5,16 +5,18 @@
             {"is-round":round},
         ]'
     >
-        <i v-if='icon' class="el-icon" :class='[`el-icon-${icon}`]'></i>
-        <span v-if="$slots.default"><slot></slot></span>
-        <span v-else>提交</span>
+        <eb-icon v-if='icon' :icon="icon"></eb-icon>
+        <span v-if="$slots.default"><slot></slot></span>        
     </button>
 </template>
 
 <script>
-
+    import ebIcon from 'src/components/icon'
     export default {
         name: 'eb-button',
+        components:{
+            ebIcon
+        },
         props:{
             icon:{
                 type: String,

@@ -1,7 +1,13 @@
 @import '../../common/var.less';
+@import '../../../common/less/font-awesome.less';
+
 .eb-alert-func(@text) {
         @color:'alert-@{text}-color';        
-        @color2: '@{text}-color';
+        @color2: '@{text}-color';        
+        .eb-icon-@{text}-circle{  
+            color: @@color2;          
+            font-size: @alert-icon-font-size
+        }
 		&.eb-alert-@{text}{
             background: @@color;
 			.eb-alert-title{
@@ -10,47 +16,58 @@
 			.eb-alert-msg{
 				color: @@color2;
 			}
-		}		
+		}
+        .eb-alert-big-@{text} {   
+            .eb-icon-2x();        
+            color: @@color2;
+        }        		
 	}
+
 // .loop(@i) when (@i < length(@typeList) + 1) {
 // 	.eb-alert-func(extract(@typeList, @i));
 // 	.loop(@i+1);
 // }
 // .loop(1);
-.eb-alert {
-    width: 100%;    
-    position: fixed; 
-    top:0;   
+.eb-alert {    
+    display:flex;  
+    flex: 1 auto;
+    align-items: center;
+    position:relative;
+    padding: 0 10px;
+    transition: opacity .2s;
+    opacity: 1;
+    &.eb-alert-fade-enter,
+    &.eb-alert-fade-leave-active {
+      opacity: 0;
+    }
+    &.eb-alert-is-center {
+        justify-content: center;
+    }
     .eb-alert-func(success);
     .eb-alert-func(error);
     .eb-alert-func(info);
-    .eb-alert-func(warn);
-
+    .eb-alert-func(warning);    
     .eb-alert-content {
-        padding:10px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        position:relative;
-        &.eb-alert-is-center {
-            justify-content: center;
-        }
+        padding:10px;                            
+    }
+    .eb-alert-title {
+        display:block;
+        font-size: 20px;
+        clear:both;
+        line-height: 1.5;
+        color:#333;
+    }
 
-        // icon
-        .eb-alert-title {
-            display:block;
-            font-size: 32px;
-            clear:both;
-        }
-
-        .eb-alert-msg {
-            font-size: 24px;
-        }
-        .eb-alert-icon{
-            position:absolute;
-            top:0;
-            right:0;
-        }
+    .eb-alert-msg {
+        font-size: 16px;
+        line-height: 1.5;
+        color:#333;
+    }
+    .eb-alert-close-icon{
+        position:absolute;
+        top:10px;
+        right:10px;
+        color:@alert-close-color;
+        cursor: pointer;
     }
 }
