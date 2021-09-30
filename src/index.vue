@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <eb-alert :visible.sync="alert_visible"></eb-alert>
     <eb-alert
       :visible.sync="alert_visible"
@@ -83,26 +83,52 @@
         <eb-button isPlain round icon="close">取消</eb-button>
       </template>
     </eb-dialog>
+    
+    <eb-accordion v-model='accordion' accordion>
+      <eb-accordion-item title='h1' name='1'>
+          与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
+          在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+      </eb-accordion-item>
+      <eb-accordion-item title='h2' name='2'>
+          与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
+          在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+      </eb-accordion-item>
+      <eb-accordion-item title='h3' name='3'>
+          与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
+          在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+      </eb-accordion-item>
+      <eb-accordion-item title='h4' name='4'>
+          与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
+          在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+      </eb-accordion-item>
+    </eb-accordion>
   </div>
 </template>
-
+<style lang="less">
+  
+</style>
 <script>
 import Button from "src/components/button";
 import Dialog from "src/components/dialog";
 import Alert from "src/components/alert";
 import Placeholder from "src/components/placeholder";
+import Accordion from "src/components/accordion";
+import AccordionItem from "src/components/accordion/item.vue";
 export default {
   components: {
     ebButton: Button,
     ebDialog: Dialog,
     ebAlert: Alert,
     ebPlaceholder: Placeholder,
+    ebAccordion:Accordion,
+    ebAccordionItem:AccordionItem
   },
   data() {
     return {
       msg: "123",
       dialog_visible: false,
       alert_visible: true,
+      accordion:'1'
     };
   },
   methods: {

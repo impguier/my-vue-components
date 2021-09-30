@@ -1,0 +1,37 @@
+.collapse-item {
+    padding: 0 30px;
+    margin-bottom: 30px;
+    position:relative;  
+    .collapse-icon{
+      font-size: 20px;
+      color:#909099;  
+      transition: transform 0.5s;      
+    }  
+    .collapse-item-header{
+      display: flex;
+      justify-content: space-between;
+      padding:10px;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 30px;
+      .collapse-item-title {
+        font-size: 36px;
+        color: #909099;      
+      }    
+    }
+    .collapse-item-content{
+      font-size: 24px;
+      opacity: 1;
+      transition: opacity .3s;
+      color:#333;
+      line-height: 1.5;
+      &.collapse-fade-enter-active{
+        opacity: 0
+      }  
+      &.collapse-fade-leave-active{
+        opacity: 0
+      }  
+    }
+  }
+  .collapse-active{
+      transform: rotate(90deg)
+  }
