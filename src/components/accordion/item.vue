@@ -5,9 +5,9 @@
         <h3 class="collapse-item-title" v-text="title"></h3>
         <eb-icon class='collapse-icon' :class="[{'collapse-active': visible}]" icon="arrow-right"></eb-icon>
       </div>
-        <transition name='collapse-fade'>
+        <eb-collapse-item-transition>
           <div class="collapse-item-content"  v-show="visible" @click='handleHeaderClick'>
-              <div v-if="$slots.default">
+              <div class="collapse-iten-inner-content" v-if="$slots.default">
                 <slot></slot>
               </div>
               <p
@@ -16,7 +16,7 @@
                 v-text="content"
               ></p>
           </div>              
-        </transition>
+        </eb-collapse-item-transition>
     </div>
   </li>
 </template>
@@ -25,7 +25,7 @@
 import emitter from '../../mixin/dispatch'
 import { generateId } from '../../utils/utils'
 import ebIcon from 'src/components/icon'
-import ebCollapseItemTransition from 'src/components/accordion/transition'
+import ebCollapseItemTransition from 'src/components/accordion/transition.js'
 export default {
   components:{
     ebIcon,

@@ -45,6 +45,7 @@
                 this.activeNames = names
                 
                 this.$emit('input', value)
+                // v-model
                 this.$emit('input', value)                
             },
             handleItemClick (item) {
